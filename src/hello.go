@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"io"
+	"net/http"
+)
+
+type AntinioHandler int
+
+func (h AntinioHandler) ServeHTTP(res http.ResponseWriter, req *http.Request)  {
+	io.WriteString(res, "Hello")
+}
 
 func main() {
-	fmt.Println("Hello app! :)")
+	var h AntinioHandler
+
+	http.ListenAndServe(":9000", h)
 }
