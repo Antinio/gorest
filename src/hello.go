@@ -8,7 +8,7 @@ import (
 type AntinioHandler int
 
 func (h AntinioHandler) ServeHTTP(res http.ResponseWriter, req *http.Request)  {
-	io.WriteString(res, "Hello")
+	io.WriteString(res, req.RequestURI)
 }
 
 func main() {
